@@ -67,18 +67,48 @@ function get_referals() {
     $db = Database::getInstance();
 
     // Query the database
-    $sql = "SELECT r.*, u.id as user_id, u.username, u.email from referal r join users u on r.user_id = u.id";
+    $sql = "SELECT r.*, u.id as user_id, u.username, u.email FROM referal r JOIN users u ON r.user_id = u.id";
     $result = $db->query($sql);
 
     $referals = [];
 
     if ($result->num_rows > 0) {
-        // Fetch the user row as an associative array
-        $referals[] = $result->fetch_assoc();
+        // Fetch all rows as associative arrays
+        while ($row = $result->fetch_assoc()) {
+            array_push($referals, $row);
+        }
     }
 
-    // Return false if login fails
     return $referals;
+}
+
+
+function get_users() {
+    $db = Database::getInstance();
+
+    // Query the database
+    $sql = "SELECT id, username, role, email FROM users";
+    $result = $db->query($sql);
+
+    $users = [];
+
+    if ($result->num_rows > 0) {
+        // Fetch all rows as associative arrays
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row; // Append each row to the $users array
+        }
+    }
+
+    return $users;
+}
+
+
+function add_referal($userId, $referalUrl, $isActive) {
+    $db = Database::getInstance();
+
+    // Query the database
+    $sql = "insert into referal (user_id, referal_url, is_active) values ('$userId', '$referalUrl', '$isActive')";
+    $db->query($sql);
 }
 
 
