@@ -63,6 +63,24 @@ function login($username, $password) {
     return false;
 }
 
+function get_referals() {
+    $db = Database::getInstance();
+
+    // Query the database
+    $sql = "SELECT r.*, u.id as user_id, u.username, u.email from referal r join users u on r.user_id = u.id";
+    $result = $db->query($sql);
+
+    $referals = [];
+
+    if ($result->num_rows > 0) {
+        // Fetch the user row as an associative array
+        $referals[] = $result->fetch_assoc();
+    }
+
+    // Return false if login fails
+    return $referals;
+}
+
 
 
 // Usage
