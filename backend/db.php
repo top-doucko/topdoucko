@@ -54,8 +54,15 @@ function login($username, $password) {
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     $result = $db->query($sql);
 
-    return $result->num_rows > 0;
+    if ($result->num_rows > 0) {
+        // Fetch the user row as an associative array
+        return $result->fetch_assoc();
+    }
+
+    // Return false if login fails
+    return false;
 }
+
 
 
 // Usage

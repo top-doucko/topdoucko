@@ -7,16 +7,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     // Call the login function
-    if (login($username, $password)) {
-        // Redirect or set a success message
+    $user = login($username, $password);
+    if ($user) {
+        // Start the session and save the whole user data
         session_start();
-        $_SESSION["username"] = $username; 
-        header("Location: index.php"); // Replace 'dashboard.php' with the page to redirect on success
+        $_SESSION["user"] = $user; // Store the entire user row in the session
+
+        // Redirect to the dashboard or homepage
+        header("Location: index.php"); // Replace 'index.php' with the page to redirect on success
         exit;
     } else {
         $error = "Invalid username or password.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
