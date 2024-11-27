@@ -6,6 +6,13 @@ if (!isset($_SESSION["username"])) {
     header("Location: login.php");
 }
 
+$message = "";
+
+if (!isset($_GET["uid"])){
+    //$message = "There is no referal with this ID.";
+    header("Location: referal.php");
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $userId = $_POST["user_id"];
     $referal_url = $_POST["referal_url"];
