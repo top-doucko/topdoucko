@@ -82,6 +82,23 @@ function get_referals() {
     return $referals;
 }
 
+function get_referal($userId) {
+    $db = Database::getInstance();
+
+    // Query the database
+    $sql = "SELECT r.*, u.id as user_id, u.username, u.email FROM referal r JOIN users u ON r.user_id = u.id WHERE u.id = $userId";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Fetch all rows as associative arrays
+        while ($row = $result->fetch_assoc()) {
+            return $row;
+        }
+    }
+
+    return null;
+}
+
 
 function get_users() {
     $db = Database::getInstance();
