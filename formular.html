@@ -22,7 +22,8 @@
             font-variation-settings:
                 "wdth" 100;
         }
-        .play{
+
+        .play {
             font-family: "Sour Gummy", sans-serif;
             font-optical-sizing: auto;
             font-weight: 400;
@@ -33,7 +34,8 @@
     </style>
 </head>
 
-<body class="bg-[#eff1f5]" style="background-image: radial-gradient(rgb(211, 211, 211) 1px, transparent 0);background-size: 40px 40px;">
+<body class="bg-[#eff1f5]"
+    style="background-image: radial-gradient(rgb(211, 211, 211) 1px, transparent 0);background-size: 40px 40px;">
     <header class="p-5 px-10 z-10 flex items-center fixed top-0 w-full bg-[#eff1f5] bg-white">
         <h1 class="text-2xl font-semibold">topdoučko</h1>
         <div class="w-full flex justify-center gap-10">
@@ -62,30 +64,57 @@
     </header>
     <section class="w-full p-60">
         <div class="bg-white rounded-xl px-20 py-16 flex gap-10">
-            
+
             <div class="flex gap-10 flex-col w-1/2">
                 <div class="w-full flex gap-5">
                     <button id="zs-btn" class="play font-bold text-lg">Základní škola</button>
-                    <button id="pss-btn" class="play font-bold text-lg text-gray-300 transition hover:text-black">Přijímačky na střední školu</button>
-                    <button id="ss-btn" class="play font-bold text-lg text-gray-300 transition hover:text-black">Střední škola</button>
-                    <button id="mz-btn" class="play font-bold text-lg text-gray-300 transition hover:text-black">Maturitní zkouška</button>
+                    <button id="pss-btn"
+                        class="play font-bold text-lg text-gray-300 transition hover:text-black">Přijímačky na střední
+                        školu</button>
+                    <button id="ss-btn" class="play font-bold text-lg text-gray-300 transition hover:text-black">Střední
+                        škola</button>
+                    <button id="mz-btn"
+                        class="play font-bold text-lg text-gray-300 transition hover:text-black">Maturitní
+                        zkouška</button>
                 </div>
                 <form class="flex flex-col gap-5 w-full">
                     <div class="flex flex-col">
                         <label class="play font-semibold" for="email">Emailová adresa</label>
-                        <input required class="outline outline-1 bg-gray-100 outline-gray-200 py-3 px-4 rounded-lg" name="email" type="email" placeholder="E-mail"/>
+                        <input required class="outline outline-1 bg-gray-100 outline-gray-200 py-3 px-4 rounded-lg"
+                            name="email" type="email" placeholder="E-mail" />
                     </div>
                     <div class="flex flex-col">
                         <label class="play font-semibold" for="jmeno">Jméno</label>
-                        <input required class="outline outline-1 bg-gray-100 outline-gray-200 py-3 px-4 rounded-lg" name="jmeno" type="text" placeholder="jméno"/>
+                        <input required class="outline outline-1 bg-gray-100 outline-gray-200 py-3 px-4 rounded-lg"
+                            name="jmeno" type="text" placeholder="jméno" />
                     </div>
                     <div class="flex flex-col">
                         <label class="play font-semibold" for="prijmeni">Příjmení</label>
-                        <input required class="outline outline-1 bg-gray-100 outline-gray-200 py-3 px-4 rounded-lg" name="prijmeni" type="text" placeholder="Příjmení"/>
+                        <input required class="outline outline-1 bg-gray-100 outline-gray-200 py-3 px-4 rounded-lg"
+                            name="prijmeni" type="text" placeholder="Příjmení" />
                     </div>
-                    <input type="submit" class="outline-0 bg-blue-400 py-3 px-4 rounded-lg text-white play font-bold text-xl cursor-pointer transition hover:bg-blue-500">
+                    <div>
+                        <div class="play font-semibold">Předměty</div>
+                        <div id="predmety-container"
+                            class="outline outline-1 bg-gray-100 outline-gray-200 px-3 gap-2 py-3 rounded-lg flex flex-wrap min-h-12">
+                        </div>
+                        <div class="flex mt-3 gap-2">
+                            <div class="text-gray-600 bg-gray-100 outline outline-2 outline-gray-200 px-3 py-1 rounded-full cursor-pointer transition-all hover:outline-0 hover:text-white hover:bg-blue-500"
+                                onclick="HandlePredmetyClick('cj')">Český jazyk</div>
+                            <div class="text-gray-600 bg-gray-100 outline outline-2 outline-gray-200 px-3 py-1 rounded-full cursor-pointer transition-all hover:outline-0 hover:text-white hover:bg-blue-500"
+                                onclick="HandlePredmetyClick('ma')">Matematika</div>
+                            <div class="text-gray-600 bg-gray-100 outline outline-2 outline-gray-200 px-3 py-1 rounded-full cursor-pointer transition-all hover:outline-0 hover:text-white hover:bg-blue-500"
+                                onclick="HandlePredmetyClick('dj')">Dějepis</div>
+                            <div class="text-gray-600 bg-gray-100 outline outline-2 outline-gray-200 px-3 py-1 rounded-full cursor-pointer transition-all hover:outline-0 hover:text-white hover:bg-blue-500"
+                                onclick="HandlePredmetyClick('pr')">Přírodopis</div>
+                            <div class="text-gray-600 bg-gray-100 outline outline-2 outline-gray-200 px-3 py-1 rounded-full cursor-pointer transition-all hover:outline-0 hover:text-white hover:bg-blue-500"
+                                onclick="HandlePredmetyClick('ze')">Zeměpis</div>
+                        </div>
+                    </div>
+                    <input type="submit"
+                        class="outline-0 bg-blue-400 py-3 px-4 rounded-lg text-white play font-bold text-xl cursor-pointer transition hover:bg-blue-500">
                 </form>
-                
+
             </div>
             <div class="w-1/2">
                 <h1 id="type-heading" class="text-3xl font-bold">Doučování pro žáky základní školy</h1>
@@ -112,7 +141,7 @@
         activeBtn.classList.add("text-black");
         activeBtn.classList.remove("text-gray-300");
 
-        switch (activeBtn){
+        switch (activeBtn) {
             case buttons.zsBtn:
                 tutoringTypeHeading.innerHTML = "Doučování pro žáky základní školy";
                 break;
@@ -133,4 +162,53 @@
     buttons.ssBtn.addEventListener("click", () => handleButtonClick(buttons.ssBtn));
     buttons.mzBtn.addEventListener("click", () => handleButtonClick(buttons.mzBtn));
 </script>
+<script>
+    const predmetyContainer = document.getElementById("predmety-container");
+
+    function HandlePredmetyClick(predmet) {
+        // Define subject mapping
+        const subjects = {
+            cj: "Český jazyk",
+            ma: "Matematika",
+            dj: "Dějepis",
+            pr: "Přírodopis",
+            ze: "Zeměpis",
+        };
+
+        // Check if subject is already added
+        if (document.getElementById(`predmet-selected-${predmet}`)) {
+            alert(`${subjects[predmet]} je již přidán.`);
+            return;
+        }
+
+        // Create the subject element
+        const predmetElement = document.createElement("div");
+        predmetElement.id = `predmet-selected-${predmet}`;
+        predmetElement.className = "text-black bg-white outline outline-2 outline-gray-200 px-3 py-1 rounded-full cursor-pointer flex gap-2 items-center transition-all hover:outline-gray-300";
+
+        // Add subject name
+        const subjectName = document.createElement("div");
+        subjectName.className = "text-sm";
+        subjectName.textContent = subjects[predmet];
+
+        // Add close button
+        const closeButton = document.createElement("div");
+        closeButton.className = "rounded-full text-black h-4 bg-gray-600 w-4 flex items-center justify-center transition-all hover:bg-red-400";
+        closeButton.innerHTML = '<div class="font-semibold text-white text-sm">×</div>';
+
+        // Handle removal of the subject
+        closeButton.addEventListener("click", () => {
+            predmetyContainer.removeChild(predmetElement);
+        });
+
+        // Append subject name and close button to the element
+        predmetElement.appendChild(subjectName);
+        predmetElement.appendChild(closeButton);
+
+        // Add the element to the container
+        predmetyContainer.appendChild(predmetElement);
+    }
+
+</script>
+
 </html>
